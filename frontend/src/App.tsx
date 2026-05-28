@@ -8,28 +8,28 @@ const API_URL = rawApiUrl.endsWith('/') ? rawApiUrl.slice(0, -1) : rawApiUrl;
 // Inline SVG Icons
 // ---------------------------------------------------------
 const ShieldIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
 );
 const DatabaseIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" /></svg>
 );
 const TableIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><line x1="9" y1="3" x2="9" y2="21" /><line x1="15" y1="3" x2="15" y2="21" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="3" y1="15" x2="21" y2="15" /></svg>
 );
 const UploadIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" /></svg>
 );
 const AlertIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
 );
 const LockIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
 );
 const EditIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg>
 );
 const CheckIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
 );
 
 export default function App() {
@@ -39,7 +39,7 @@ export default function App() {
   const [token, setToken] = useState<string | null>(localStorage.getItem('esg_token'));
   const [user, setUser] = useState<any>(null);
   const [activeTab, setActiveTab] = useState<string>('ledger');
-  
+
   // Auth Form State
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -56,7 +56,7 @@ export default function App() {
   const [selectedActivity, setSelectedActivity] = useState<any>(null);
   const [filterState, setFilterState] = useState('');
   const [filterScope, setFilterScope] = useState('');
-  
+
   // Edit Modal State
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editQty, setEditQty] = useState('');
@@ -136,7 +136,7 @@ export default function App() {
       if (params.toString()) {
         url += `?${params.toString()}`;
       }
-      
+
       const res = await fetch(url, {
         headers: { 'Authorization': `Token ${token}` }
       });
@@ -216,7 +216,7 @@ export default function App() {
     setUploadStatus('Uploading and normalizing...');
     setIsUploading(true);
     const start = Date.now();
-    
+
     const formData = new FormData();
     formData.append('source_type', selectedSource);
     formData.append('file', fileToUpload);
@@ -275,7 +275,7 @@ export default function App() {
     try {
       const res = await fetch(`${API_URL}/api/activities/${id}/reject/`, {
         method: 'POST',
-        headers: { 
+        headers: {
           'Authorization': `Token ${token}`,
           'Content-Type': 'application/json'
         },
@@ -343,7 +343,7 @@ export default function App() {
       setEditError('An audit justification reason is required.');
       return;
     }
-    
+
     try {
       const res = await fetch(`${API_URL}/api/activities/${selectedActivity.id}/`, {
         method: 'PUT',
@@ -393,7 +393,7 @@ export default function App() {
       <div className="auth-wrapper">
         <div className="auth-card glass-panel">
           <div className="auth-header">
-            <h1>CHI-CHA</h1>
+
             <p>Enterprise ESG Data Ingestion & Audit Ledger</p>
           </div>
           <form onSubmit={handleLogin}>
@@ -536,7 +536,7 @@ export default function App() {
                     <option value="TRAVEL">Corporate Travel APIs (JSON)</option>
                   </select>
                 </div>
-                
+
                 <div className="form-group" style={{ marginTop: 24 }}>
                   <label>Data File</label>
                   <div className="upload-zone">
@@ -599,11 +599,11 @@ export default function App() {
                       <div>Rows parsed: {job.records_count}</div>
                       <div>Date: {new Date(job.created_at).toLocaleString()}</div>
                       {job.error_log && (
-                        <div style={{ 
-                          color: 'var(--accent-rose)', 
-                          background: 'rgba(239, 68, 68, 0.05)', 
-                          padding: 8, 
-                          borderRadius: 4, 
+                        <div style={{
+                          color: 'var(--accent-rose)',
+                          background: 'rgba(239, 68, 68, 0.05)',
+                          padding: 8,
+                          borderRadius: 4,
                           marginTop: 8,
                           fontFamily: 'monospace',
                           fontSize: 11
@@ -654,7 +654,7 @@ export default function App() {
                   </button>
                 </div>
               </div>
-                    <div className="table-container-relative">
+              <div className="table-container-relative">
                 {isActivitiesLoading && (
                   <div className="table-loading-overlay">
                     <span className="spinner-large"></span>
@@ -798,7 +798,7 @@ export default function App() {
                         >
                           <EditIcon /> <span style={{ marginLeft: 6 }}>Edit Record</span>
                         </button>
-                        
+
                         {selectedActivity.review_state === 'APPROVED' && (
                           <button
                             className="btn-primary"
@@ -861,24 +861,24 @@ export default function App() {
               </h2>
               <div className="svg-chart-container">
                 <div className="chart-bar-wrapper">
-                  <div 
-                    className="chart-bar chart-bar-scope1" 
+                  <div
+                    className="chart-bar chart-bar-scope1"
                     style={{ height: `${Math.min(100, Math.max(10, getScopeEmissions('SCOPE_1') / 100))}%` }}
                     data-val={`${getScopeEmissions('SCOPE_1').toFixed(0)} L/kg`}
                   />
                   <div className="chart-label">Scope 1</div>
                 </div>
                 <div className="chart-bar-wrapper">
-                  <div 
-                    className="chart-bar chart-bar-scope2" 
+                  <div
+                    className="chart-bar chart-bar-scope2"
                     style={{ height: `${Math.min(100, Math.max(10, getScopeEmissions('SCOPE_2') / 500))}%` }}
                     data-val={`${getScopeEmissions('SCOPE_2').toFixed(0)} kWh`}
                   />
                   <div className="chart-label">Scope 2</div>
                 </div>
                 <div className="chart-bar-wrapper">
-                  <div 
-                    className="chart-bar chart-bar-scope3" 
+                  <div
+                    className="chart-bar chart-bar-scope3"
                     style={{ height: `${Math.min(100, Math.max(10, getScopeEmissions('SCOPE_3') / 200))}%` }}
                     data-val={`${getScopeEmissions('SCOPE_3').toFixed(0)} p-km`}
                   />
@@ -940,9 +940,9 @@ export default function App() {
               <span>Adjust Sustainability Record</span>
               <button className="modal-close" onClick={() => setIsEditModalOpen(false)}>×</button>
             </div>
-            
+
             {editError && <div style={{ color: 'var(--accent-rose)', fontSize: 14 }}>{editError}</div>}
-            
+
             <div className="form-group">
               <label>Normalized Quantity</label>
               <input
@@ -952,7 +952,7 @@ export default function App() {
                 onChange={(e) => setEditQty(e.target.value)}
               />
             </div>
-            
+
             <div className="form-group">
               <label>Activity Date</label>
               <input
