@@ -59,14 +59,16 @@ TEMPLATES = [
     },
 ]
 
+import dj_database_url
+
 WSGI_APPLICATION = 'esg_backend.wsgi.application'
 
-# SQLite locally, dynamic PostgreSQL/other if DATABASE_URL env is set (for Railway/Render/Fly)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
