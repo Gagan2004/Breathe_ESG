@@ -833,7 +833,7 @@ export default function App() {
                           <div>By: {log.user_username}</div>
                           {log.notes && <div style={{ fontStyle: 'italic', color: 'var(--text-secondary)', marginTop: 2 }}>"{log.notes}"</div>}
                           {log.changes && Object.keys(log.changes).length > 0 && (
-                            <div style={{ fontSize: 11, color: 'var(--accent-blue)', marginTop: 4, fontFamily: 'monospace' }}>
+                            <div style={{ fontSize: 11, color: 'var(--accent-blue)', marginTop: 4, fontFamily: 'monospace', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}>
                               Changes: {JSON.stringify(log.changes)}
                             </div>
                           )}

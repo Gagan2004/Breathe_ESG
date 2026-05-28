@@ -407,7 +407,11 @@ button, input, select, textarea {
   gap: 20px;
   position: sticky;
   top: 24px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
   height: fit-content;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
 .trace-title {
