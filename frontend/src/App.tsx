@@ -445,7 +445,6 @@ export default function App() {
       <header className="header-bar glass-panel">
         <div className="brand">
           <ShieldIcon />
-          <span>CHI-CHA</span>
         </div>
         <nav className="nav-tabs">
           <button
