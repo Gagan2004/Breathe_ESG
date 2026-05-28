@@ -68,6 +68,12 @@ export default function App() {
   // Audit Logs State
   const [auditLogs, setAuditLogs] = useState<any[]>([]);
 
+  // Loading States for Smooth Transitions
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [isActivitiesLoading, setIsActivitiesLoading] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+
+
   // ---------------------------------------------------------
   // Effects
   // ---------------------------------------------------------
@@ -120,6 +126,8 @@ export default function App() {
   };
 
   const fetchActivities = async () => {
+    setIsActivitiesLoading(true);
+    const start = Date.now();
     try {
       let url = `${API_URL}/api/activities/`;
       const params = new URLSearchParams();
@@ -134,6 +142,10 @@ export default function App() {
       });
       if (res.ok) {
         const data = await res.json();
+        const duration = Date.now() - start;
+        if (duration < 600) {
+          await new Promise(resolve => setTimeout(resolve, 600 - duration));
+        }
         setActivities(data);
         // Sync selected activity if open
         if (selectedActivity) {
@@ -143,6 +155,8 @@ export default function App() {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      setIsActivitiesLoading(false);
     }
   };
 
@@ -163,12 +177,18 @@ export default function App() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginError('');
+    setIsLoggingIn(true);
+    const start = Date.now();
     try {
       const res = await fetch(`${API_URL}/api/auth/login/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
       });
+      const duration = Date.now() - start;
+      if (duration < 800) {
+        await new Promise(resolve => setTimeout(resolve, 800 - duration));
+      }
       if (res.ok) {
         const data = await res.json();
         localStorage.setItem('esg_token', data.token);
@@ -179,6 +199,8 @@ export default function App() {
       }
     } catch {
       setLoginError('Server connection failed. Make sure backend is running.');
+    } finally {
+      setIsLoggingIn(false);
     }
   };
 
@@ -192,6 +214,8 @@ export default function App() {
     e.preventDefault();
     if (!fileToUpload) return;
     setUploadStatus('Uploading and normalizing...');
+    setIsUploading(true);
+    const start = Date.now();
     
     const formData = new FormData();
     formData.append('source_type', selectedSource);
@@ -205,6 +229,11 @@ export default function App() {
         },
         body: formData
       });
+
+      const duration = Date.now() - start;
+      if (duration < 1000) {
+        await new Promise(resolve => setTimeout(resolve, 1000 - duration));
+      }
 
       if (res.ok) {
         setUploadStatus('Ingested and auto-normalized successfully!');
@@ -222,6 +251,8 @@ export default function App() {
       }
     } catch {
       setUploadStatus('Network error during file upload.');
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -389,8 +420,15 @@ export default function App() {
                 required
               />
             </div>
-            <button type="submit" className="btn-primary" style={{ marginTop: 8 }}>
-              Access Platform
+            <button type="submit" className="btn-primary" style={{ marginTop: 8 }} disabled={isLoggingIn}>
+              {isLoggingIn ? (
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                  <span className="spinner-mini"></span>
+                  <span>Verifying Credentials...</span>
+                </div>
+              ) : (
+                "Access Platform"
+              )}
             </button>
             <div style={{ marginTop: 20, fontSize: 12, color: 'var(--text-muted)', textAlign: 'center' }}>
               Credentials: <code>analyst</code> / <code>analyst123</code>
@@ -529,9 +567,16 @@ export default function App() {
                   type="submit"
                   className="btn-primary"
                   style={{ marginTop: 8 }}
-                  disabled={!fileToUpload}
+                  disabled={!fileToUpload || isUploading}
                 >
-                  Process and Auto-Normalize
+                  {isUploading ? (
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                      <span className="spinner-mini"></span>
+                      <span>Processing & Normalizing...</span>
+                    </div>
+                  ) : (
+                    "Process and Auto-Normalize"
+                  )}
                 </button>
               </form>
             </div>
@@ -609,49 +654,58 @@ export default function App() {
                   </button>
                 </div>
               </div>
-
-              <div className="activity-table-wrapper">
-                <table className="activity-table">
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Category</th>
-                      <th>Scope</th>
-                      <th>Raw Quantity</th>
-                      <th>Normalized Quantity</th>
-                      <th>Audit Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {activities.map((a) => (
-                      <tr
-                        key={a.id}
-                        className={selectedActivity?.id === a.id ? 'selected' : ''}
-                        onClick={() => setSelectedActivity(a)}
-                      >
-                        <td>{a.activity_date}</td>
-                        <td>
-                          <div style={{ fontWeight: 600 }}>{a.activity_category}</div>
-                          <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>{a.job_filename}</div>
-                        </td>
-                        <td>
-                          <span className={`badge ${a.emissions_scope === 'SCOPE_1' ? 'badge-scope1' : a.emissions_scope === 'SCOPE_2' ? 'badge-scope2' : 'badge-scope3'}`}>
-                            {a.emissions_scope.replace('_', ' ')}
-                          </span>
-                        </td>
-                        <td>{parseFloat(a.raw_quantity).toLocaleString()} {a.raw_unit}</td>
-                        <td>
-                          <strong>{parseFloat(a.normalized_quantity).toLocaleString()}</strong> {a.normalized_unit}
-                        </td>
-                        <td>
-                          <span className={`badge ${a.review_state === 'LOCKED' ? 'badge-locked' : a.review_state === 'APPROVED' ? 'badge-approved' : a.review_state === 'FLAGGED' ? 'badge-flagged' : 'badge-ingested'}`}>
-                            {a.review_state}
-                          </span>
-                        </td>
+                    <div className="table-container-relative">
+                {isActivitiesLoading && (
+                  <div className="table-loading-overlay">
+                    <span className="spinner-large"></span>
+                    <span style={{ fontWeight: 600, color: 'var(--text-secondary)', fontSize: 14 }}>
+                      Syncing ledger records...
+                    </span>
+                  </div>
+                )}
+                <div className="activity-table-wrapper">
+                  <table className="activity-table">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Scope</th>
+                        <th>Raw Quantity</th>
+                        <th>Normalized Quantity</th>
+                        <th>Audit Status</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {activities.map((a) => (
+                        <tr
+                          key={a.id}
+                          className={selectedActivity?.id === a.id ? 'selected' : ''}
+                          onClick={() => setSelectedActivity(a)}
+                        >
+                          <td>{a.activity_date}</td>
+                          <td>
+                            <div style={{ fontWeight: 600 }}>{a.activity_category}</div>
+                            <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>{a.job_filename}</div>
+                          </td>
+                          <td>
+                            <span className={`badge ${a.emissions_scope === 'SCOPE_1' ? 'badge-scope1' : a.emissions_scope === 'SCOPE_2' ? 'badge-scope2' : a.emissions_scope === 'SCOPE_3' ? 'badge-scope3' : 'badge-scope3'}`}>
+                              {a.emissions_scope.replace('_', ' ')}
+                            </span>
+                          </td>
+                          <td>{parseFloat(a.raw_quantity).toLocaleString()} {a.raw_unit}</td>
+                          <td>
+                            <strong>{parseFloat(a.normalized_quantity).toLocaleString()}</strong> {a.normalized_unit}
+                          </td>
+                          <td>
+                            <span className={`badge ${a.review_state === 'LOCKED' ? 'badge-locked' : a.review_state === 'APPROVED' ? 'badge-approved' : a.review_state === 'FLAGGED' ? 'badge-flagged' : a.review_state === 'INGESTED' ? 'badge-ingested' : 'badge-ingested'}`}>
+                              {a.review_state}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
 

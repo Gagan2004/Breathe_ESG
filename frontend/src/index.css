@@ -561,3 +561,77 @@ button, input, select, textarea {
   color: var(--text-secondary);
   font-weight: 600;
 }
+
+/* Loading & Transition Animations */
+.spinner-mini {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-top-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.table-container-relative {
+  position: relative;
+  min-height: 200px;
+}
+
+.table-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 15, 29, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+  animation: fadeIn 0.2s ease-out;
+  border-radius: 12px;
+}
+
+.spinner-large {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--accent-purple);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.transition-fade {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Skeleton Loading styles */
+.skeleton-pulse {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.02) 25%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.02) 75%
+  );
+  background-size: 200% 100%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
