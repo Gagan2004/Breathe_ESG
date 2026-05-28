@@ -1,0 +1,95 @@
+[
+  {
+    "trip_id": "trip-001",
+    "date": "2026-05-01",
+    "segments": [
+      {
+        "type": "flight",
+        "origin": "LAX",
+        "destination": "JFK",
+        "cabin": "Economy",
+        "miles": 2469,
+        "passengers": 1,
+        "vendor": "UA"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip-002",
+    "date": "2026-05-02",
+    "segments": [
+      {
+        "type": "flight",
+        "origin": "JFK",
+        "destination": "LHR",
+        "cabin": "Business",
+        "miles": null,
+        "passengers": 2,
+        "vendor": "BA"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip-003",
+    "date": "2026-05-03",
+    "segments": [
+      {
+        "type": "flight",
+        "origin": "CDG",
+        "destination": "XYZ",
+        "cabin": "First",
+        "miles": null,
+        "passengers": 1,
+        "vendor": "AF"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip-004",
+    "date": "2026-05-01",
+    "segments": [
+      {
+        "type": "hotel",
+        "nights": 5,
+        "vendor": "Marriott"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip-005",
+    "date": "2026-05-04",
+    "segments": [
+      {
+        "type": "hotel",
+        "nights": 45,
+        "vendor": "Hilton"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip-006",
+    "date": "2026-05-05",
+    "segments": [
+      {
+        "type": "flight",
+        "origin": "JFK",
+        "destination": "JFK",
+        "cabin": "Economy",
+        "miles": 0,
+        "passengers": 1,
+        "vendor": "DL"
+      }
+    ]
+  },
+  {
+    "trip_id": "trip-007",
+    "date": "2026-05-06",
+    "segments": [
+      {
+        "type": "car",
+        "miles": 150,
+        "vendor": "Hertz"
+      }
+    ]
+  }
+]
